@@ -12,13 +12,13 @@ import static com.feeham.playground.constants.ApplicationConstants.MIN_RATING;
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @Builder
 public class Rating {
     private Integer ratingId;
-    private Double rate;
+    private Integer rate;
     private String comment;
     private Tourist ratedBy;
     private LocalDateTime created;
     private LocalDateTime updated;
 
-    public void setRate(Double rate){
+    public void setRate(Integer rate){
         if(rate > MAX_RATING) {
             throw new CustomException("Maximum rating limit is " + MAX_RATING, HttpStatus.BAD_REQUEST);
         }
