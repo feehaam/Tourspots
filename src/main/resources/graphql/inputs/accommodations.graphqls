@@ -1,0 +1,21 @@
+input AccommodationInput {
+    name: String!
+    type: String!
+    address: AddressInput!
+    description: String
+    facilities: FacilitiesInput!
+    geoLocation: GeoLocationInput!
+    photos: [String]!
+}
+
+input FacilitiesInput {
+    rentPerNight: Float!
+    foodIncluded: Boolean!
+    discount: Float
+    offers: String
+}
+
+input GeoLocationInput {
+    latitude: Float!
+    longitude: Float!
+}

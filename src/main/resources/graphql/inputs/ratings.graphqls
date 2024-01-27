@@ -1,0 +1,5 @@
+input RatingInput {
+    rate: Float!
+    comment: String
+    ratedBy: Int!
+}
