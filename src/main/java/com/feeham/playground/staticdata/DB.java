@@ -50,7 +50,7 @@ public class DB {
             "The best resort in the area. Feel the paradise.",
             facilities, geolocation, photos, 7.9, 42, ratings);
     public static final Accommodation accommodation2 = new Accommodation(1,
-            "Paradise Resort", "Hotel", dummyAddress,
+            "Hotel Andromeda", "Hotel", dummyAddress,
             "The best resort in the area. Feel the paradise.",
             facilities, geolocation, photos, 7.9, 42, ratings);
     public static List<Accommodation> accommodations = List.of(accommodation1, accommodation2);
