@@ -1,16 +1,72 @@
 type Query {
-    bookById(id: ID): Book
+    # getAccommodationById(accommodationId: Int!): Accommodation
+    # getAccommodationsByType(type: String!): [Accommodation]
+    # getTourSpotById(tourSpotId: Int!): TourSpot
+    # getTourSpotsByRating(minRating: Float, maxRating: Float): [TourSpot]
+    getTouristById(touristId: Int!): Tourist
+    getTouristByName(name: String!): Tourist
 }
 
-type Book {
-    id: ID
-    name: String
-    pageCount: Int
-    author: Author
+
+type Accommodation {
+    accommodationId: Int!
+    name: String!
+    type: String!
+    address: Address!
+    description: String
+    facilities: Facilities!
+    geoLocation: GeoLocation!
+    photos: [String]!
+    averageRating: Float
+    totalRatingCount: Int
+    ratings: [Rating]
 }
 
-type Author {
-    id: ID
-    firstName: String
-    lastName: String
+type Address {
+    street: String!
+    city: String!
+    state: String!
+    postalCode: String!
+    country: String!
+}
+
+type Facilities {
+    facId: Int!
+    rentPerNight: Float!
+    foodIncluded: Boolean!
+    discount: Float
+    offers: String
+}
+
+type GeoLocation {
+    latitude: Float!
+    longitude: Float!
+}
+
+type Rating {
+    ratingId: Int!
+    rate: Float!
+    comment: String
+    ratedBy: Tourist!
+    created: String!
+    updated: String!
+}
+
+type Tourist {
+    touristId: Int!
+    firstName: String!
+    lastName: String!
+    currentAddress: Address!
+    birthPlace: Address!
+}
+
+type TourSpot {
+    tourSpotId: Int!
+    tourSpotName: String!
+    description: String
+    photos: [String]!
+    nearbyHotels: [Accommodation]
+    averageRating: Float
+    totalRatingCount: Int
+    ratings: [Rating]
 }
