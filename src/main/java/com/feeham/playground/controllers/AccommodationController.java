@@ -13,6 +13,7 @@ public class AccommodationController {
 
     private final AccommodationService accommodationService;
 
+
     public AccommodationController(AccommodationService accommodationService) {
         this.accommodationService = accommodationService;
     }

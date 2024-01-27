@@ -2,7 +2,7 @@ type Query {
     getAccommodationById(accommodationId: Int!): Accommodation
     getAccommodationsByType(type: String!): [Accommodation]
     getTourSpotById(tourSpotId: Int!): TourSpot
-    getTourSpotsByRating(minRating: Float, maxRating: Float): [TourSpot]
+    getTourSpotsByRating(minRating: Int, maxRating: Int): [TourSpot]
     getTouristById(touristId: Int!): Tourist
     getTouristByName(name: String!): Tourist
 }

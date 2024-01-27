@@ -58,11 +58,12 @@ public class DB {
     // Dummy Tour spot
     public static final TourSpot tourSpot1 = new TourSpot(1, "Sajek Valley",
             "Touch the clouds with your bare hands", photos, Set.of(accommodation1, accommodation2),
-            8.9, 230, ratings);
+            5.6, 230, ratings);
     public static final TourSpot tourSpot2 = new TourSpot(1, "Sajek Valley",
             "Touch the clouds with your bare hands", photos, Set.of(accommodation1, accommodation2),
             8.9, 230, ratings);
     public static final TourSpot tourSpot3 = new TourSpot(1, "Sajek Valley",
             "Touch the clouds with your bare hands", photos, Set.of(accommodation1, accommodation2),
-            8.9, 230, ratings);
+            7.7, 230, ratings);
+    public static final List<TourSpot> tourSpots = List.of(tourSpot1, tourSpot2, tourSpot3);
 }

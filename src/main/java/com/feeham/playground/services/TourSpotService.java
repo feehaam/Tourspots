@@ -2,7 +2,9 @@ package com.feeham.playground.services;
 
 import com.feeham.playground.models.TourSpot;
 
+import java.util.List;
+
 public interface TourSpotService {
     TourSpot getTourSpotById(Integer tourSpotId);
-    TourSpot getTourSpotsByRating(Double min, Double max);
+    List<TourSpot> getTourSpotsByRating(Integer min, Integer max);
 }
