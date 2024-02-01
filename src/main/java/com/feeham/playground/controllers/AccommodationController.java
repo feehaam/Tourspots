@@ -32,8 +32,17 @@ public class AccommodationController {
     }
 
     @MutationMapping
-    public ResponseEntity<Void> createAccommodation(@Argument Map<String, Object> input){
-        accommodationService.create(input);
-        return ResponseEntity.ok().build();
+    public Accommodation createAccommodation(@Argument Map<String, Object> input) {
+        return accommodationService.create(input);
+    }
+
+    @MutationMapping
+    public Accommodation updateAccommodation(@Argument Integer accommodationId, @Argument Map<String, Object> input) {
+        return accommodationService.update(accommodationId, input);
+    }
+
+    @MutationMapping
+    public Boolean deleteAccommodation(@Argument Integer accommodationId) {
+        return accommodationService.delete(accommodationId);
     }
 }

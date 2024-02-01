@@ -1,6 +1,6 @@
 input AccommodationInput {
     name: String!
-    type: String!
+    type: AccommodationType!
     address: AddressInput!
     description: String
     facilities: FacilitiesInput!
@@ -18,4 +18,12 @@ input FacilitiesInput {
 input GeoLocationInput {
     latitude: Float!
     longitude: Float!
+}
+
+enum AccommodationType{
+    HOTEL
+    HOSTEL
+    RESORT
+    CAMPGROUND_SHELTERED
+    CAMPGROUND_OPEN_SKY
 }

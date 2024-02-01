@@ -46,15 +46,16 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
-    public void create(Map<String, Object> mappedObject) {
+    public Accommodation create(Map<String, Object> mappedObject) {
         Accommodation accommodation = getObjectFromRequestMap(mappedObject);
         accommodation.setAverageRating(0.0);
         accommodation.setTotalRatingCount(0);
         DB.accommodations.add(accommodation);
+        return null;
     }
 
     @Override
-    public void update(Integer accId, Map<String, Object> mappedObject) {
+    public Accommodation update(Integer accId, Map<String, Object> mappedObject) {
         Accommodation existing = getById(accId);
         Accommodation accommodation = getObjectFromRequestMap(mappedObject);
         existing.setName(accommodation.getName());
@@ -65,12 +66,15 @@ public class AccommodationServiceImpl implements AccommodationService {
         existing.setPhotos(accommodation.getPhotos());
         existing.setRatings(accommodation.getRatings());
         existing.setDescription(accommodation.getDescription());
+
+        return null;
     }
 
     @Override
-    public void delete(Integer accId) {
+    public Boolean delete(Integer accId) {
         DB.accommodations = DB.accommodations.stream()
                 .filter(acc -> !Objects.equals(acc.getAccommodationId(), accId))
                 .toList();
+        return true;
     }
 }
