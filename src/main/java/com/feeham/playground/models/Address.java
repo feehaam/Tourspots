@@ -4,6 +4,7 @@ import lombok.*;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor @Builder
 public class Address {
+//    private Integer addressId;
     private String street;
     private String city;
     private String state;

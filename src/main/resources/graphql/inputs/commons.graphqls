@@ -1,7 +1,7 @@
 input AddressInput {
-    street: String!
+    street: String
     city: String!
-    state: String!
-    postalCode: String!
+    state: String
+    postalCode: String
     country: String!
 }

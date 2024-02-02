@@ -1,4 +1,4 @@
-package com.feeham.playground.services;
+package com.feeham.playground.services.interfaces;
 
 import com.feeham.playground.models.TourSpot;
 

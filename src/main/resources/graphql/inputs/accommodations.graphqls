@@ -4,8 +4,8 @@ input AccommodationInput {
     address: AddressInput!
     description: String
     facilities: FacilitiesInput!
-    geoLocation: GeoLocationInput!
-    photos: [String]!
+    geoLocation: GeoLocationInput
+    photos: [String]
 }
 
 input FacilitiesInput {

@@ -1,5 +1,5 @@
 input TourSpotInput {
     tourSpotName: String!
-    description: String
-    photos: [String]!
+    description: String!
+    photos: [String]
 }

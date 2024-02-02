@@ -1,8 +1,7 @@
 package com.feeham.playground.controllers;
 
 import com.feeham.playground.models.TourSpot;
-import com.feeham.playground.services.TourSpotService;
-import com.feeham.playground.services.TouristService;
+import com.feeham.playground.services.interfaces.TourSpotService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;

@@ -1,7 +1,7 @@
 package com.feeham.playground.controllers;
 
 import com.feeham.playground.models.Accommodation;
-import com.feeham.playground.services.AccommodationService;
+import com.feeham.playground.services.interfaces.AccommodationService;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;

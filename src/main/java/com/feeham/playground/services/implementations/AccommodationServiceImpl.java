@@ -1,12 +1,12 @@
-package com.feeham.playground.services;
+package com.feeham.playground.services.implementations;
 
 import com.feeham.playground.exceptions.CustomException;
 import com.feeham.playground.models.Accommodation;
 import com.feeham.playground.models.Address;
 import com.feeham.playground.models.Facilities;
 import com.feeham.playground.models.GeoLocation;
+import com.feeham.playground.services.interfaces.AccommodationService;
 import com.feeham.playground.staticdata.DB;
-import com.feeham.playground.utils.MapExtractor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 

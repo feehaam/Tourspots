@@ -1,7 +1,8 @@
-package com.feeham.playground.services;
+package com.feeham.playground.services.implementations;
 
 import com.feeham.playground.exceptions.CustomException;
 import com.feeham.playground.models.Tourist;
+import com.feeham.playground.services.interfaces.TouristService;
 import com.feeham.playground.staticdata.DB;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 @Service
-public class TouristServiceImpl implements TouristService{
+public class TouristServiceImpl implements TouristService {
     @Override
     public Tourist getTouristsById(Integer touristId) {
         Optional<Tourist> result = DB.tourists.stream()
