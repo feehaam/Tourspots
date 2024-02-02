@@ -30,14 +30,19 @@ public class TouristController {
         return touristService.getTouristsByName(name);
     }
 
-    @SchemaMapping
-    public Address address(Tourist tourist){
-        return null;
+    @MutationMapping
+    public Tourist createTourist(@Argument Map<String, Object> input){
+        return touristService.create(input);
     }
 
     @MutationMapping
-    public Tourist createTourist(@Argument Map<String, Object> input){
-        input = null;
-        return null;
+    public Tourist updateTourist(@Argument Integer touristId, @Argument Map<String, Object> input){
+        return touristService.update(touristId, input);
     }
+
+    @MutationMapping
+    public Boolean deleteTourist(@Argument Integer touristId){
+        return touristService.delete(touristId);
+    }
+
 }

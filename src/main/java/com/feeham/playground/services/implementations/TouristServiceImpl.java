@@ -7,6 +7,7 @@ import com.feeham.playground.staticdata.DB;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -34,5 +35,20 @@ public class TouristServiceImpl implements TouristService {
             throw new CustomException("Tourist with name "+ name + " was not found!", HttpStatus.NOT_FOUND);
         }
         return result.get();
+    }
+
+    @Override
+    public Tourist create(Map<String, Object> input) {
+        return null;
+    }
+
+    @Override
+    public Tourist update(Integer touristId, Map<String, Object> input) {
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Integer touristId) {
+        return null;
     }
 }
