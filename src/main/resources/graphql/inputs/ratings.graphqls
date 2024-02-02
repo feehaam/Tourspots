@@ -6,6 +6,6 @@ enum RatingTypeEnum {
 input RatingInput {
     rate: Float!
     ratedBy: Int!
-    ratingType: RatingTypeEnum
+    ratingType: RatingTypeEnum!
     comment: String
 }
