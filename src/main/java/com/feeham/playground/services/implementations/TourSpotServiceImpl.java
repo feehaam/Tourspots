@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -30,5 +31,20 @@ public class TourSpotServiceImpl implements TourSpotService {
         return DB.tourSpots.stream()
                 .filter(tourSpot -> tourSpot.getAverageRating() >= min && tourSpot.getAverageRating() <= max)
                 .toList();
+    }
+
+    @Override
+    public TourSpot create(Map<String, Object> input) {
+        return null;
+    }
+
+    @Override
+    public TourSpot update(Integer tourSpotId, Map<String, Object> input) {
+        return null;
+    }
+
+    @Override
+    public Boolean delete(Integer tourSpotId) {
+        return null;
     }
 }

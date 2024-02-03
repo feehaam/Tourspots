@@ -2,4 +2,6 @@ input TourSpotInput {
     tourSpotName: String!
     description: String!
     photos: [String]
+    address: AddressInput!
+    geoLocation: GeoLocationInput!
 }

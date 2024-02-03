@@ -10,6 +10,8 @@ public class TourSpot {
     private String tourSpotName;
     private String description;
     private Set<String> photos;
+    private Address address;
+    private GeoLocation geoLocation;
     private Set<Accommodation> nearbyHotels;
     private Double averageRating;
     private Integer totalRatingCount;
