@@ -14,6 +14,7 @@ import java.util.Optional;
 
 @Service
 public class TourSpotServiceImpl implements TourSpotService {
+
     @Override
     public TourSpot getTourSpotById(Integer tourSpotId) {
         Optional<TourSpot> result = DB.tourSpots.stream()

@@ -39,7 +39,8 @@ public class TouristServiceImpl implements TouristService {
 
     @Override
     public Tourist create(Map<String, Object> input) {
-        return null;
+        Tourist tourist = mapToObject(input, Tourist.class);
+        return tourist;
     }
 
     @Override
