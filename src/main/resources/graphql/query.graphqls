@@ -7,4 +7,7 @@ type Query {
 
     getTouristById(touristId: Int!): Tourist
     getTouristByName(name: String!): Tourist
+
+    getTestById(id: Int!): TestModel
+    getTests: [TestModel]
 }

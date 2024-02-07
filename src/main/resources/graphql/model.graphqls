@@ -60,3 +60,10 @@ type TourSpot {
     totalRatingCount: Int
     ratings: [Rating]
 }
+
+type TestModel {
+    id: Int!
+    name: String!
+    age: String!
+    occupation: String!
+}
