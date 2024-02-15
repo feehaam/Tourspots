@@ -6,7 +6,7 @@ type Query {
     getTourSpotsByRating(minRating: Int, maxRating: Int): [TourSpot]
 
     getTouristById(touristId: Int!): Tourist
-    getTouristByName(name: String!): Tourist
+    getTouristByName(name: String!): [Tourist]
 
     getTestById(id: Int!): TestModel
     getTests: [TestModel]

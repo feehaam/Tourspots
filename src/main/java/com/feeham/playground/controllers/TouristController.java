@@ -9,6 +9,7 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -26,7 +27,7 @@ public class TouristController {
     }
 
     @QueryMapping
-    public Tourist getTouristByName(@Argument String name){
+    public List<Tourist> getTouristByName(@Argument String name){
         return touristService.getTouristsByName(name);
     }
 
