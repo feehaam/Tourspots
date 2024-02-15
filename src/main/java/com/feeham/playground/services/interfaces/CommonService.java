@@ -6,4 +6,7 @@ import com.feeham.playground.constants.PropertyConstants;
 import com.feeham.playground.utils.MapExtractor;
 
 public interface CommonService extends MapExtractor, ApplicationConstants, PropertyConstants, ErrorConstants {
+    default Integer getUserId(){
+        return 1;
+    }
 }
