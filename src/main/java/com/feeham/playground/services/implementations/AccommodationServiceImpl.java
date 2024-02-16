@@ -77,4 +77,9 @@ public class AccommodationServiceImpl implements AccommodationService {
                 .toList();
         return true;
     }
+
+    @Override
+    public List<Accommodation> nearbyAccommodations(GeoLocation geoLocation) {
+        return null;
+    }
 }

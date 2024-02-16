@@ -1,51 +1,82 @@
 package com.feeham.playground.services.implementations;
 
 import com.feeham.playground.exceptions.CustomException;
+import com.feeham.playground.models.Accommodation;
 import com.feeham.playground.models.TourSpot;
+import com.feeham.playground.repositories.TourSpotRepository;
+import com.feeham.playground.services.interfaces.AccommodationService;
 import com.feeham.playground.services.interfaces.TourSpotService;
 import com.feeham.playground.staticdata.DB;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class TourSpotServiceImpl implements TourSpotService {
+
+    private final TourSpotRepository tourSpotRepository;
+    private final AccommodationService accommodationService;
 
     @Override
     public TourSpot getTourSpotById(Integer tourSpotId) {
-        Optional<TourSpot> result = DB.tourSpots.stream()
-                .filter(tourSpot -> Objects.equals(tourSpot.getTourSpotId(), tourSpotId))
-                .findFirst();
-        if(result.isEmpty()){
-            throw new CustomException("Tour spot with ID "+ tourSpotId
-                    + " was not found!", HttpStatus.NOT_FOUND);
-        }
-        return result.get();
+        TourSpot tourSpot = getTourSpot(tourSpotId);
+        setNearbyAccommodations(tourSpot);
+        return tourSpot;
     }
 
     @Override
     public List<TourSpot> getTourSpotsByRating(Integer min, Integer max) {
-        return DB.tourSpots.stream()
-                .filter(tourSpot -> tourSpot.getAverageRating() >= min && tourSpot.getAverageRating() <= max)
+        return tourSpotRepository.findAll().stream()
+                .filter(tourSpot ->
+                        tourSpot.getAverageRating() >= min &&
+                        tourSpot.getAverageRating() <= max)
                 .toList();
     }
 
     @Override
     public TourSpot create(Map<String, Object> input) {
-        return null;
+        TourSpot tourSpot = mapToObject(input, TourSpot.class);
+        tourSpot.setTourSpotId(0);
+        tourSpot.setRatings(new HashSet<>());
+        tourSpot.setAverageRating(0.0);
+        tourSpot.setTotalRatingCount(0);
+        tourSpot.setNearbyHotels(new HashSet<>());
+        tourSpotRepository.save(tourSpot);
+        return tourSpot;
     }
 
     @Override
     public TourSpot update(Integer tourSpotId, Map<String, Object> input) {
-        return null;
+        TourSpot tourSpotUpdate = mapToObject(input, TourSpot.class);
+        TourSpot tourSpot = getTourSpot(tourSpotId);
+        tourSpot.setTourSpotName(tourSpotUpdate.getTourSpotName());
+        tourSpot.setAddress(tourSpotUpdate.getAddress());
+        tourSpot.setPhotos(tourSpotUpdate.getPhotos());
+        tourSpot.setGeoLocation(tourSpotUpdate.getGeoLocation());
+        tourSpotRepository.save(tourSpot);
+        return tourSpot;
     }
 
     @Override
     public Boolean delete(Integer tourSpotId) {
-        return null;
+        TourSpot tourSpot = getTourSpot(tourSpotId);
+        tourSpotRepository.delete(tourSpot);
+        return true;
+    }
+
+    private TourSpot getTourSpot(Integer tourSpotId){
+        Optional<TourSpot> tourSpotOp = tourSpotRepository.findById(tourSpotId);
+        if(tourSpotOp.isEmpty()) {
+            throw new CustomException("Tour spot with ID " + tourSpotId + " doesn't exist.", HttpStatus.NOT_FOUND);
+        }
+        return tourSpotOp.get();
+    }
+
+    private void setNearbyAccommodations(TourSpot tourSpot){
+        tourSpot.setNearbyHotels(accommodationService
+                .nearbyAccommodations(tourSpot.getGeoLocation()));
     }
 }
