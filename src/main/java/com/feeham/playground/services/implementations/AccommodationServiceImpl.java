@@ -32,7 +32,7 @@ public class AccommodationServiceImpl implements AccommodationService {
 
     @Override
     public List<Accommodation> getByType(String type) {
-        return DB.accommodations.stream()
+        return accommodationRepository.findAll().stream()
                 .filter(acc -> acc.getType().equalsIgnoreCase(type))
                 .toList();
     }
@@ -54,8 +54,8 @@ public class AccommodationServiceImpl implements AccommodationService {
         Accommodation accommodation = getObjectFromRequestMap(mappedObject);
         accommodation.setAverageRating(0.0);
         accommodation.setTotalRatingCount(0);
-        DB.accommodations.add(accommodation);
-        return null;
+        accommodationRepository.save(accommodation);
+        return accommodation;
     }
 
     @Override
@@ -70,20 +70,26 @@ public class AccommodationServiceImpl implements AccommodationService {
         existing.setPhotos(accommodation.getPhotos());
         existing.setRatings(accommodation.getRatings());
         existing.setDescription(accommodation.getDescription());
-
-        return null;
+        accommodationRepository.save(existing);
+        return existing;
     }
 
     @Override
     public Boolean delete(Integer accId) {
-        DB.accommodations = DB.accommodations.stream()
-                .filter(acc -> !Objects.equals(acc.getAccommodationId(), accId))
-                .toList();
+        Accommodation existing = getById(accId);
+        accommodationRepository.delete(existing);
         return true;
     }
 
     @Override
     public Set<Accommodation> nearbyAccommodations(GeoLocation geoLocation) {
-        return null;
+        return Set.copyOf(accommodationRepository.findAll().stream().filter(accommodation -> {
+            return isClose(geoLocation.getLatitude(), accommodation.getGeoLocation().getLatitude()) &&
+                    isClose(geoLocation.getLongitude(), accommodation.getGeoLocation().getLongitude());
+        }).toList());
+    }
+
+    private boolean isClose(Double positionA, Double positionB){
+        return Math.abs(positionA - positionB) <= GEO_POSITION_CLOSE_IN_METER;
     }
 }

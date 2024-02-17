@@ -1,6 +1,7 @@
 package com.feeham.playground.constants;
 
 public interface ApplicationConstants {
-    public final Integer MAX_RATING = 10;
-    public final Integer MIN_RATING = 1;
+    Integer MAX_RATING = 10;
+    Integer MIN_RATING = 1;
+    Integer GEO_POSITION_CLOSE_IN_METER = 3000;
 }
