@@ -5,20 +5,24 @@ import com.feeham.playground.models.Accommodation;
 import com.feeham.playground.models.Address;
 import com.feeham.playground.models.Facilities;
 import com.feeham.playground.models.GeoLocation;
+import com.feeham.playground.repositories.AccommodationRepository;
 import com.feeham.playground.services.interfaces.AccommodationService;
 import com.feeham.playground.staticdata.DB;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@RequiredArgsConstructor
 public class AccommodationServiceImpl implements AccommodationService {
+
+    private final AccommodationRepository accommodationRepository;
+
     @Override
     public Accommodation getById(Integer accommodationId) {
-        Optional<Accommodation> result = DB.accommodations.stream()
-                .filter(acc -> Objects.equals(acc.getAccommodationId(), accommodationId))
-                .findFirst();
+        Optional<Accommodation> result = accommodationRepository.findById(accommodationId);
         if(result.isEmpty()){
             throw new CustomException("Accommodation with ID "+ accommodationId
                     + " was not found!", HttpStatus.NOT_FOUND);
@@ -79,7 +83,7 @@ public class AccommodationServiceImpl implements AccommodationService {
     }
 
     @Override
-    public List<Accommodation> nearbyAccommodations(GeoLocation geoLocation) {
+    public Set<Accommodation> nearbyAccommodations(GeoLocation geoLocation) {
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package com.feeham.playground.models;
 
+import com.feeham.playground.constants.enums.RatingType;
 import com.feeham.playground.exceptions.CustomException;
 import lombok.*;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,8 @@ public class Rating {
     private Integer rate;
     private String comment;
     private Tourist ratedBy;
+    private RatingType ratingType;
+    private Integer targetId;
     private LocalDateTime created;
     private LocalDateTime updated;
 
