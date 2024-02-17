@@ -4,7 +4,6 @@ import com.feeham.playground.exceptions.CustomException;
 import com.feeham.playground.models.Tourist;
 import com.feeham.playground.repositories.TouristRepository;
 import com.feeham.playground.services.interfaces.TouristService;
-import com.feeham.playground.staticdata.DB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

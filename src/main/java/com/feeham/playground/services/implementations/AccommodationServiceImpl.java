@@ -7,7 +7,6 @@ import com.feeham.playground.models.Facilities;
 import com.feeham.playground.models.GeoLocation;
 import com.feeham.playground.repositories.AccommodationRepository;
 import com.feeham.playground.services.interfaces.AccommodationService;
-import com.feeham.playground.staticdata.DB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

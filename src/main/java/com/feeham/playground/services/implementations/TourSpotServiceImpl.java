@@ -1,12 +1,10 @@
 package com.feeham.playground.services.implementations;
 
 import com.feeham.playground.exceptions.CustomException;
-import com.feeham.playground.models.Accommodation;
 import com.feeham.playground.models.TourSpot;
 import com.feeham.playground.repositories.TourSpotRepository;
 import com.feeham.playground.services.interfaces.AccommodationService;
 import com.feeham.playground.services.interfaces.TourSpotService;
-import com.feeham.playground.staticdata.DB;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
